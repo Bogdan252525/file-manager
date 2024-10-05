@@ -2,32 +2,44 @@ import os from 'os';
 import path from 'path';
 import readline from 'readline';
 import { homedir } from 'os';
-import {helper} from './utils/helper.js';
+import { helper } from './utils/helper.js';
 import {
-  navigateUp, changeDirectory, listDirectory
+  navigateUp,
+  changeDirectory,
+  listDirectory,
 } from './commands/navigation.js';
 import {
-  readFile, addFile, renameFile, copyFile, moveFile, deleteFile
+  readFile,
+  addFile,
+  renameFile,
+  copyFile,
+  moveFile,
+  deleteFile,
 } from './commands/fileOperations.js';
 import {
-  getEOL, getCPUs, getHomeDir, getUsername, getArch
+  getEOL,
+  getCPUs,
+  getHomeDir,
+  getUsername,
+  getArch,
 } from './commands/osInfo.js';
-import {
-  compressFile, decompressFile
-} from './commands/compression.js';
-import { calculateFileHash } from './commands/hashing.js'
+import { compressFile, decompressFile } from './commands/compression.js';
+import { calculateFileHash } from './commands/hashing.js';
 
 const args = process.argv.slice(2);
-const username = args.find(arg => arg.startsWith('--username='))
-  ?.split('=')[1] || 'Anonymous';
+const username =
+  args.find((arg) => arg.startsWith('--username='))?.split('=')[1] ||
+  'Anonymous';
 
-console.log(`Welcome to the File Manager, ${username}!\nType "help" to see example commands`);
+console.log(
+  `Welcome to the File Manager, ${username}!\nType "help" to see example commands`
+);
 
 let currentDir = homedir();
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
-  prompt: `You are currently in ${currentDir}\n> `
+  prompt: `You are currently in ${currentDir}\n> `,
 });
 
 rl.prompt();
@@ -37,9 +49,9 @@ rl.on('line', async (input) => {
 
   try {
     switch (command) {
-			case 'help':
-				helper();
-				break;
+      case 'help':
+        helper();
+        break;
       case 'up':
         currentDir = navigateUp(currentDir);
         break;
