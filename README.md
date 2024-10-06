@@ -1,6 +1,7 @@
 # file-manager
 
 Examples of commands for MAC
+An alternative input option is indicated in quotation marks
 
 Start the application: npm run start -- --username=your_username
 Examples of commands for MAC: help

@@ -7,7 +7,7 @@ export const readFile = async (fileName, currentDir) => {
   const fullPath = path.join(currentDir, fileName);
   try {
     const readStream = fs.createReadStream(fullPath, 'utf8');
-    readStream.pipe(process.stdout);
+    readStream.pipe(process.stdout);		
     readStream.on('error', () => console.log('Operation failed'));
   } catch (error) {
     console.log('Operation failed');
